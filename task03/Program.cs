@@ -11,10 +11,14 @@ int GetNumber(string message)
 double[] GetArray(int size)
 {
     double[] array = new double[size];
+    Random random = new Random();
     for (int i = 0; i < size; i++)
     {
-        array[i] = new Random().NextDouble();
-        Console.Write($"{array[i]:F2} ");
+        // array[i] = rnd.NextDouble() * 10 - 5; // (-5; 5)
+        // array[i] = Math.Round(array[i], 2)
+        array[i] = Math.Round(random.NextDouble() * 10 - 5, 2); // (-5; 5)
+        // Console.Write($"{array[i]:F2} ");
+        Console.Write($"{array[i]} ");
     }
     return array;
 }
@@ -27,7 +31,7 @@ double MinNumber(double[] array)
 {
     int j = 0;
     double minNumber = array[j];
-    for(int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         if (array[i] < minNumber) minNumber = array[i];
     }
@@ -39,7 +43,7 @@ double MaxNumber(double[] array)
 {
     int j = 0;
     double maxNumber = array[j];
-    for(int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i++)
     {
         if (array[i] > maxNumber) maxNumber = array[i];
     }
@@ -50,3 +54,5 @@ double MaxNumber(double[] array)
 double minNumber = MinNumber(array);
 double maxNumber = MaxNumber(array);
 Console.WriteLine($"Разница между максимальным и минимальным элементом массива: {(maxNumber - minNumber):F2}");
+
+// Console.WriteLine(String.Join("|", startArray));
